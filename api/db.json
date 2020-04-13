@@ -1,0 +1,105 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Minim adipisicing deserunt incididunt occaecat veniam.",
+      "subTitle": "Elit qui tempor pariatur occaecat minim cillum fugiat anim.",
+      "content": "Aliquip deserunt mollit commodo ullamco officia Lorem duis magna eu incididunt ipsum. Nostrud voluptate eiusmod dolore cillum labore nisi in culpa occaecat proident in ullamco. Velit cillum aliqua Lorem veniam. Et qui labore commodo anim sit minim exercitation ex consectetur deserunt proident. Tempor eu sit velit ex consequat anim consequat. Incididunt enim velit dolor cillum commodo enim ex deserunt adipisicing. Deserunt do laborum laborum aliquip.",
+      "featuredImage": "https://picsum.photos/seed/1/800/600",
+      "authorId": 1
+    },
+    {
+        "id": 2,
+        "title": "Velit duis ullamco dolor nostrud fugiat laboris ad magna ad velit ullamco.",
+        "subTitle": "Eu aliquip ex tempor elit irure qui laboris nulla in incididunt consequat exercitation.",
+        "content": "Laboris ipsum veniam do laboris sunt voluptate est sit consequat ipsum consequat voluptate occaecat. Ut fugiat duis sint tempor quis elit fugiat nostrud commodo ullamco. Est do dolore duis sunt. Est sunt aute culpa culpa elit ullamco aute ex aliquip esse esse cillum et. Magna cillum dolore exercitation eiusmod consequat. Nulla irure nulla elit ad labore.",
+        "featuredImage": "https://picsum.photos/seed/2/800/600",
+        "authorId": 3
+    },
+    {
+        "id": 3,
+        "title": "Amet mollit eiusmod enim velit magna incididunt commodo reprehenderit do.",
+        "subTitle": "Qui qui nostrud ad sunt quis commodo Lorem enim excepteur adipisicing Lorem.",
+        "content": "Consequat aute cillum occaecat laboris dolore. Commodo quis minim consequat nostrud. Duis eiusmod dolor occaecat consectetur adipisicing consequat duis. Magna sit adipisicing ut minim ullamco.",
+        "featuredImage": "https://picsum.photos/seed/3/800/600",
+        "authorId": 2
+    },
+    {
+        "id": 4,
+        "title": "Mollit Lorem velit in aute laborum.",
+        "subTitle": "Enim labore consequat pariatur aute.",
+        "content": "Anim cupidatat nostrud dolor eu exercitation veniam ea aliquip. Tempor id pariatur proident consequat sunt. Proident sit cillum adipisicing et sit irure ut adipisicing occaecat aute exercitation. Qui enim quis laborum quis commodo fugiat magna sit sunt.",
+        "featuredImage": "https://picsum.photos/seed/4/800/600",
+        "authorId": 1
+    },
+    {
+        "id": 5,
+        "title": "Ullamco elit in quis sit aliquip consectetur nulla.",
+        "subTitle": "Labore culpa mollit velit eu dolor dolor ea consectetur.",
+        "content": "Do aliquip aute ex in occaecat reprehenderit. Ut nostrud excepteur ex in cillum. Deserunt ad elit reprehenderit non adipisicing laborum amet culpa officia veniam est.",
+        "featuredImage": "https://picsum.photos/seed/5/800/600",
+        "authorId": 2
+    },
+    {
+        "id": 6,
+        "title": "Ex dolor exercitation nisi officia elit sit excepteur nisi commodo sunt id labore.",
+        "subTitle": "Laborum sunt mollit do dolore dolore non proident nisi elit pariatur Lorem in.",
+        "content": "Labore occaecat do aliquip cillum dolore velit ex. Sit incididunt veniam nostrud nisi. Exercitation ex pariatur nulla est. Laborum mollit labore nostrud anim incididunt occaecat esse anim magna ea eiusmod id. Aliqua laboris eiusmod tempor incididunt veniam non consequat. Quis minim irure esse deserunt.",
+        "featuredImage": "https://picsum.photos/seed/6/800/600",
+        "authorId": 3
+    },
+    {
+        "id": 7,
+        "title": "Lorem dolor aliqua culpa Lorem cillum nostrud est aliquip duis nostrud nulla incididunt mollit cupidatat.",
+        "subTitle": "Commodo reprehenderit elit esse quis occaecat id.",
+        "content": "Dolore tempor quis aliquip do nostrud minim sint. Labore fugiat proident excepteur labore reprehenderit magna pariatur cillum laborum eu labore cupidatat anim. Adipisicing ad mollit nulla labore quis do mollit pariatur ullamco reprehenderit reprehenderit id excepteur ipsum. Eu excepteur proident velit mollit aliqua qui occaecat ut sunt occaecat et. Nulla adipisicing occaecat nostrud ut magna dolore sit. Occaecat nisi dolor labore duis magna nulla ut ullamco aliquip proident ad adipisicing.",
+        "featuredImage": "https://picsum.photos/seed/7/800/600",
+        "authorId":2
+    },
+    {
+        "id": 8,
+        "title": "Ex cupidatat laborum ipsum nulla minim duis anim.",
+        "subTitle": "Veniam aliqua sit laboris laboris.",
+        "content": "Do id eiusmod esse id ad aute adipisicing magna. Culpa reprehenderit exercitation dolor deserunt commodo consequat culpa laboris ipsum non. Reprehenderit amet nulla aute qui tempor culpa culpa qui. Est voluptate do ut officia. Fugiat do adipisicing esse qui excepteur. Do veniam labore incididunt sint incididunt excepteur dolore aute et ipsum nisi dolor irure.",
+        "featuredImage": "https://picsum.photos/seed/8/800/600",
+        "authorId": 1
+    },
+    {
+        "id": 9,
+        "title": "Excepteur cupidatat Lorem in do occaecat.",
+        "subTitle": "Exercitation laborum mollit cupidatat consequat ad aliquip velit Lorem.",
+        "content": "Pariatur sint laborum consequat in eiusmod amet qui veniam ipsum. Minim ipsum laborum sit sint quis elit. Consequat ipsum occaecat nulla irure do officia exercitation ullamco velit. Mollit deserunt eu duis enim nulla labore minim ea amet veniam cillum fugiat magna.",
+        "featuredImage": "https://picsum.photos/seed/9/800/600",
+        "authorId":2
+    },
+    {
+        "id": 10,
+        "title": "Ea do irure aliqua mollit amet ex proident.",
+        "subTitle": "Eiusmod nisi sint amet nulla nisi culpa ad velit officia in ad dolor enim dolore.",
+        "content": "Cupidatat minim pariatur esse amet magna. Aute consequat voluptate nisi dolore exercitation eu velit ad Lorem velit sit quis. Magna veniam fugiat velit quis duis dolor magna culpa. Amet excepteur eu elit ullamco est. Officia eu pariatur fugiat voluptate qui velit. Elit et cupidatat irure dolore laboris cupidatat culpa. Labore mollit commodo officia est aliqua culpa veniam ut.",
+        "featuredImage": "https://picsum.photos/seed/10/800/600",
+        "authorId": 3
+    },
+    {
+        "id": 11,
+        "title": "Laboris nulla pariatur incididunt velit voluptate ea.",
+        "subTitle": "Labore officia eiusmod eiusmod ut enim qui excepteur voluptate adipisicing aliquip incididunt id.",
+        "content": "Commodo voluptate in adipisicing irure. Lorem voluptate ea duis pariatur. Deserunt sit aliqua sunt nostrud magna pariatur reprehenderit. Magna ad exercitation do eu est et sint mollit dolore officia est. Aliquip ullamco cupidatat ad ipsum ea laborum non aliqua exercitation ea ex ullamco. Officia mollit qui tempor cupidatat cillum eiusmod occaecat deserunt nulla ipsum id incididunt. Sit excepteur est occaecat nostrud amet sint quis.",
+        "featuredImage": "https://picsum.photos/seed/11/800/600",
+        "authorId": 2
+    },
+    {
+        "id": 12,
+        "title": "Reprehenderit excepteur quis nulla dolore elit est velit laboris et adipisicing Lorem adipisicing labore.",
+        "subTitle": "Adipisicing sit dolore ad tempor consequat.",
+        "content": "Qui nostrud est laborum irure velit quis et aliqua quis exercitation aliqua quis aliqua. Excepteur fugiat in id laborum irure eiusmod voluptate cillum id cillum. Enim eu labore exercitation quis esse ad id consectetur laboris. Lorem occaecat sit enim cillum culpa ex consectetur qui. Fugiat minim eiusmod exercitation cupidatat ex aliqua qui. Ea commodo et sit ex consectetur pariatur enim fugiat labore eiusmod anim commodo consectetur est. Eiusmod deserunt sit sint id.",
+        "featuredImage": "https://picsum.photos/seed/12/800/600",
+        "authorId": 3
+    }
+  ],
+  "authors": [
+    { "id": 1, "name": "John Doe", "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=a72ca28288878f8404a795f39642a46f" },
+    { "id": 2, "name": "Alison Davidson", "avatarUrl":"https://images.unsplash.com/photo-1513732822839-24f03a92f633?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ" },
+    { "id": 3, "name": "Rose Hodges", "avatarUrl": "https://images.unsplash.com/photo-1510227272981-87123e259b17?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=3759e09a5b9fbe53088b23c615b6312e" }
+  ]
+}

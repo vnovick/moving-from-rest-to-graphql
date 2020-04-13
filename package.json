@@ -1,0 +1,17 @@
+{
+  "name": "moving-from-rest-to-graphql",
+  "version": "1.0.0",
+  "description": "Egghead workshop by Vladimir Novick",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd api && npm start && cd ../client && npm start"
+  },
+  "keywords": [
+    "GraphQL",
+    "NodeJS",
+    "Apollo"
+  ],
+  "author": "Vladimir Novick",
+  "license": "ISC",
+  "repository": "git@github.com:vnovick/moving-from-rest-to-graphql.git"
+}
