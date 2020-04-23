@@ -1,8 +1,9 @@
 # How to get started
 
 ## Install all server dependencies
+
 ```
-cd client
+cd frontend
 npm install
 ```
 
@@ -13,6 +14,7 @@ cd api
 npm install
 ```
 
-## Running server and client 
+## Running server and client
 
-You can run server and client in separate tabs by executing `npm start` in both `client` and `api` folder or by simply running `npm start` from the project folder (After installing all dependencies)
+You can run server and client in separate tabs by executing `npm start` in both
+`client` and `api` folder (After installing all dependencies)
