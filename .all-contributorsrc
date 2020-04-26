@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "vnovick",
+      "name": "Vladimir Novick",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/3762909?v=4",
+      "profile": "https://vnovick.com",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "moving-from-rest-to-graphql",
+  "projectOwner": "vnovick",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
