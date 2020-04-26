@@ -4,16 +4,33 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const jsonServer = require('json-server')
+const {ApolloServer, gql} = require('apollo-server-express')
 const app = express()
 
 ///////////Here we will start GraphQL implementation
 
 // Construct a schema, using GraphQL schema language
 
-// TODO: 1. Write GraphQL Schema definition by defining root level Query type with one single hello query that will return a String
-// TODO: 2. create a new ApolloServer providing it type definitions just defined
-// TODO: 3. add mocks: true to ApolloServer to make sure we are able to get unimplemented resolvers through mocks. Make sure to also add mockEntireSchema: false
-// TODO: 4. add resolver for hello query that will return "Hello GraphQL"
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`
+
+const resolvers = {
+  Query: {
+    hello: () => 'Hello GraphQL',
+  },
+}
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  mocks: true,
+  mockEntireSchema: false,
+})
+
+server.applyMiddleware({app})
 
 //////////////// End of GraphQL section
 
