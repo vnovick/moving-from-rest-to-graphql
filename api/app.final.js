@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const jsonServer = require('json-server')
 const {ApolloServer, gql} = require('apollo-server-express')
-const {typeDefs} = require('./typeDefs/index.final')
+const {typeDefs} = require('./typeDefs')
 const {resolvers} = require('./resolvers/final')
 const app = express()
 

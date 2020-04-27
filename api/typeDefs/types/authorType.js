@@ -1,7 +1,12 @@
 const {gql} = require('apollo-server-express')
 
-// TODO: define authorType
-const authorType = {}
+const authorType = gql`
+  type Author {
+    id: ID!
+    name: String
+    avatarUrl: String
+  }
+`
 
 module.exports = {
   authorType,

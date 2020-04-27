@@ -1,9 +1,14 @@
 const {gql} = require('apollo-server-express')
 
 const query = gql`
+  enum ORDER {
+    ASC
+    DESC
+  }
+
   type Query {
     hello: String
-    # TODO: Define posts root query
+    posts(order: ORDER, limit: Int): [Post]
   }
 `
 

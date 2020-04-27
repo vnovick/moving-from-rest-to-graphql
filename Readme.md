@@ -89,6 +89,7 @@ Workshop schedule
 - GraphQL endpoint setup
 - Design a GraphQL Schema by analyzing REST api
 - Implementing temporary resolvers for Queries
+- Batch REST requests with REST Data Source
 - Migrate to the same data source
 - Implement Mutations
 
@@ -157,7 +158,7 @@ npm install
 - follow
   [Instructions.md](https://github.com/vnovick/moving-from-rest-to-graphql/blob/exercise-5/Instructions.md)
 
-## Exercise 6 - Migrate to the same data source
+## Exercise 6 - Batch REST requests with REST Data Source
 
 - `git checkout exercise-6`
 - install dependencies:
@@ -170,7 +171,7 @@ npm install
 - follow
   [Instructions.md](https://github.com/vnovick/moving-from-rest-to-graphql/blob/exercise-6/Instructions.md)
 
-## Exercise 7 - Implement Mutations and Input types
+## Exercise 7 - Migrate to the same data source
 
 - `git checkout exercise-7`
 - install dependencies:
@@ -182,6 +183,19 @@ npm install
 
 - follow
   [Instructions.md](https://github.com/vnovick/moving-from-rest-to-graphql/blob/exercise-7/Instructions.md)
+
+## Exercise 8 - Implement Mutations and Input types
+
+- `git checkout exercise-8`
+- install dependencies:
+
+```sh
+cd api
+npm install
+```
+
+- follow
+  [Instructions.md](https://github.com/vnovick/moving-from-rest-to-graphql/blob/exercise-8/Instructions.md)
 
 ## Author
 

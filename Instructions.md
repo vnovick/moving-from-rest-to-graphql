@@ -1,4 +1,4 @@
-# Exercise 4 - Explore GraphQL queries and mutations
+# Exercise 5 - Implementing temporary resolvers for Queries
 
 ## Background
 
@@ -33,11 +33,6 @@ based** folder structure.
 These files should be modified during exercise. They also include **TODO**
 comments for your convenience
 
-- `typeDef/query.js` - will include additional root query for posts
-- `typeDef/index.js` - will export postType and authorType definitions after
-  implementing them
-- `typeDefs/types/postType.js` - will export postType definition
-- `typeDefs/types/authorType.js` - will export authorType definition
 - `resolvers/postsResolvers.js` - will export resolvers relevant to posts
 - `resolvers/authorsResolvers.js` - will export resolvers relevant to authors
 
@@ -48,7 +43,7 @@ the following query:
 
 ```graphql
 query getPosts {
-  posts {
+  posts(order: DESC, limit: 3) {
     id
     title
     author {
@@ -69,83 +64,11 @@ result
   "data": {
     "posts": [
       {
-        "id": "1",
-        "title": "Minim adipisicing deserunt incididunt occaecat veniam.",
+        "id": "12",
+        "title": "Reprehenderit excepteur quis nulla dolore elit est velit laboris et adipisicing Lorem adipisicing labore.",
         "author": {
           "name": "Name",
-          "avatarUrl": "Avatar Url"
-        }
-      },
-      {
-        "id": "2",
-        "title": "Velit duis ullamco dolor nostrud fugiat laboris ad magna ad velit ullamco.",
-        "author": {
-          "name": "Name",
-          "avatarUrl": "Avatar Url"
-        }
-      },
-      {
-        "id": "3",
-        "title": "Amet mollit eiusmod enim velit magna incididunt commodo reprehenderit do.",
-        "author": {
-          "name": "Name",
-          "avatarUrl": "Avatar Url"
-        }
-      },
-      {
-        "id": "4",
-        "title": "Mollit Lorem velit in aute laborum.",
-        "author": {
-          "name": "Name",
-          "avatarUrl": "Avatar Url"
-        }
-      },
-      {
-        "id": "5",
-        "title": "Ullamco elit in quis sit aliquip consectetur nulla.",
-        "author": {
-          "name": "Name",
-          "avatarUrl": "Avatar Url"
-        }
-      },
-      {
-        "id": "6",
-        "title": "Ex dolor exercitation nisi officia elit sit excepteur nisi commodo sunt id labore.",
-        "author": {
-          "name": "Name",
-          "avatarUrl": "Avatar Url"
-        }
-      },
-      {
-        "id": "7",
-        "title": "Lorem dolor aliqua culpa Lorem cillum nostrud est aliquip duis nostrud nulla incididunt mollit cupidatat.",
-        "author": {
-          "name": "Name",
-          "avatarUrl": "Avatar Url"
-        }
-      },
-      {
-        "id": "8",
-        "title": "Ex cupidatat laborum ipsum nulla minim duis anim.",
-        "author": {
-          "name": "Name",
-          "avatarUrl": "Avatar Url"
-        }
-      },
-      {
-        "id": "9",
-        "title": "Excepteur cupidatat Lorem in do occaecat.",
-        "author": {
-          "name": "Name",
-          "avatarUrl": "Avatar Url"
-        }
-      },
-      {
-        "id": "10",
-        "title": "Ea do irure aliqua mollit amet ex proident.",
-        "author": {
-          "name": "Name",
-          "avatarUrl": "Avatar Url"
+          "avatarUrl": "https://images.unsplash.com/photo-1510227272981-87123e259b17?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=3759e09a5b9fbe53088b23c615b6312e"
         }
       },
       {
@@ -153,15 +76,15 @@ result
         "title": "Laboris nulla pariatur incididunt velit voluptate ea.",
         "author": {
           "name": "Name",
-          "avatarUrl": "Avatar Url"
+          "avatarUrl": "https://images.unsplash.com/photo-1513732822839-24f03a92f633?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
         }
       },
       {
-        "id": "12",
-        "title": "Reprehenderit excepteur quis nulla dolore elit est velit laboris et adipisicing Lorem adipisicing labore.",
+        "id": "10",
+        "title": "Ea do irure aliqua mollit amet ex proident.",
         "author": {
           "name": "Name",
-          "avatarUrl": "Avatar Url"
+          "avatarUrl": "https://images.unsplash.com/photo-1510227272981-87123e259b17?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=3759e09a5b9fbe53088b23c615b6312e"
         }
       }
     ]
@@ -171,31 +94,28 @@ result
 
 </details>
 
-posts should be brought from `http://localhost:3001/api/posts` and author name
-and avatar url should be resolved from `Author` type resolver
+posts should be brought from `http://localhost:3001/api/posts` and avatarUrl
+should be resolved from `http://localhost:3001/api/authors/${authorId}` in
+`Author` type resolver
 
 You can run final version of the app by executing `npm run start:final` and
 exploring the final version
 
 **Steps:**
 
-1. Write a new query definition to query all posts in `typeDefs/query.js`
-2. Define Author type in `typeDefs/authorType.js` and Post type in `postType`.
-   Import these types in `typeDefs/index.js` (Uncomment the code there)
-3. Create posts root query resolver in `resolvers/postsResolvers.js`
-4. Use
+1. Use
    [`async` resolver](https://graphql.org/learn/execution/#asynchronous-resolvers)
-   to fetch all posts data from `http://localhost:3001/api/posts` and return it
-   from resolver
-5. Create Author type resolver that will include resolvers for two fields
-   `avatarUrl` and `name`. They need to return result as in sample payload above
+   to fetch all posts data (with `node-fetch`) from
+   `http://localhost:3001/api/posts` and return it from resolver
+2. load `avatarUrl` from `http://localhost:3001/api/authors/${authorId}`
+   endpoint in `Author` `avatarUrl` field resolver
 
-## Extra credit:
+   > Hint: in order to pass `authorId` to Author resolver you need to map over
+   > posts and return `author: posts.authorId`. Then to access it from `async`
+   > resolver you can use first argument of resolver function. Read more
+   > [here](https://graphql.org/learn/execution/)
 
-1. load `avatarUrl` from actual author endpoint
-2. reuse frontend logic from `PostsPage` to load deduplicated requests for
-   authors on root level
+## Extra Credit
 
-> Hint: in order to pass `authorId` to Author resolver you need to map over
-> posts and return `author: posts.authorId`. Then to access it from `async`
-> resolver you can use first argument of resolver function
+- reuse frontend logic from `frontend/pages/PostsPage` to load deduplicated
+  requests for authors on posts root query level
