@@ -37,7 +37,7 @@ const limit = (data, limit) => data.slice(0, limit)
 const postsResolvers = {
   Query: {
     posts: (obj, args, context) => {
-      const posts = args.order ? sort(dummyData, 'id', args.order) : args
+      const posts = args.order ? sort(dummyData, 'id', args.order) : dummyData
       return args.limit ? limit(posts, args.limit) : posts
     },
   },
