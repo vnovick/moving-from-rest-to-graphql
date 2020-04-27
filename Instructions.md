@@ -19,9 +19,3 @@ if you haven't done that yet.
 - Browse the page on `localhost:3000` for our frontend app.
 - Notice how much requests are sent to the server by opening Dev Tools.
 - Execute same requests in Postman.
-
-# Actual exercise
-
-1. Add a new User using Postman
-2. Add a new blog post to that User with Postman
-3. Check amount of new requests added on the main page.
