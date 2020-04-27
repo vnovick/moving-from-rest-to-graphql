@@ -7,7 +7,7 @@ const helloResolver = {
   },
 }
 
-const resolvers = [helloResolver, postsResolvers, authorsResolvers]
+const resolvers = [helloResolver]
 
 module.exports = {
   resolvers,
