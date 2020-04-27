@@ -16,7 +16,9 @@ const postsResolvers = {
     posts: async (_, args) => {
       const result = await fetch(`http://localhost:3001/api/posts`)
       const postsResult = await result.json()
-      const posts = args.order ? sort(postsResult, 'id', args.order) : args
+      const posts = args.order
+        ? sort(postsResult, 'id', args.order)
+        : postsResult
       const limitedPosts = args.limit ? limit(posts, args.limit) : posts
       return limitedPosts.map((post) => ({
         ...post,
