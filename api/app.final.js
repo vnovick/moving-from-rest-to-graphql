@@ -5,23 +5,13 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const jsonServer = require('json-server')
 const {ApolloServer, gql} = require('apollo-server-express')
+const {typeDefs} = require('./typeDefs/index.final')
+const {resolvers} = require('./resolvers/final')
 const app = express()
 
 ///////////Here we will start GraphQL implementation
 
 // Construct a schema, using GraphQL schema language
-
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`
-
-const resolvers = {
-  Query: {
-    hello: () => 'Hello GraphQL',
-  },
-}
 
 const server = new ApolloServer({
   typeDefs,
