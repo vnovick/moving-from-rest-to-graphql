@@ -13,58 +13,28 @@ These files should be modified during exercise. They also include **TODO**
 comments for your convenience
 
 - `app.js`
-- `data/postsJsonDataSource.js` - will include Custom JSON Data Source to access
-  our json file
-- `resolvers/postsResolvers.js` - switch using JSON data source
-- `resolvers/authorsResolvers.js` - switch using JSON data source
+- `data/postsJsonDataSource.js`
+- `types/authorType.js`
+- `types/mutation.js`
+- `resolvers/postsResolvers.js`
+- `resolvers/authorsResolvers.js`
 
 ## Instructions
 
-In this exercise we will migrate our posts and authors resolvers to different
-dataSource. Note that we can gradually migrate simply by switching reference to
-different data sources
+In this exercise we will migrate create Mutations for creating a new user and
+post.
 
 **Steps:**
 
-1. Implement `get` function in `data/postsJsonDataSource.js` using
-
-```javascript
-const result = await readFile(this.jsonDbPath)
-const parsedResult = JSON.parse(result)
-```
-
-2. In `data/postsJsonDataSource.js` implement `getPosts` method and
-   `getAuthorById` methods
-3. Change data source in `postsResolver`
-4. Execute the following query:
-
-```graphql
-query getPosts {
-  posts(order: DESC, limit: 3) {
-    id
-    title
-    author {
-      name
-      avatarUrl
-    }
-  }
-}
-```
-
-Notice that in our api log we will see both request to REST endpoints for
-authors and `File access for posts` as well as `REST` API calls
-
-5. Switch both posts and authors using json data source by accessing it through
-   resolver context
+1. Define `insertAuthor` root mutation in `query` that accepts `AuthorInputType`
+2. Create a resolver in `authorsResolvers.js` that will call
+   `postsJsonAPI.insertAuthor` function
+3. Implement `insertAuthor` function in `postsJsonDataSource.js`
+4. Create a new root Mutation `insertPost` and configure it to accept
+   `PostInputType` input type. Input type should have required `authorId`
+5. Implement `insertPost` resolver to insert a post
 
 ## Extra Credit
 
-- Implement simple cache in `postsJsonDataSource`
-
-```javascript
-// Get item from the cache
-const cache = await this.keyValueCache.get(CACHE_KEY)
-
-// Write item into cache
-await this.keyValueCache.set(CACHE_KEY, parsedResult)
-```
+- Configure `insertPost` mutation to accept both `authorId` or `AuthorInputType`
+- Implement resolver, so we can insert both post and user in one mutation

@@ -9,8 +9,7 @@ const authorsResolvers = {
       return fetchDataFromDataSource(
         {
           field: 'name',
-          // TODO: Switch to different data source
-          dataSource: dataSources.postsAPI,
+          dataSource: dataSources.postsJsonAPI,
         },
         authorId,
       )
@@ -19,8 +18,7 @@ const authorsResolvers = {
       return fetchDataFromDataSource(
         {
           field: 'avatarUrl',
-          // TODO: Switch to different data source
-          dataSource: dataSources.postsAPI,
+          dataSource: dataSources.postsJsonAPI,
         },
         authorId,
       )

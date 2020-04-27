@@ -19,16 +19,25 @@ class PostsJsonDataSource extends DataSource {
 
   //Caching our json file and limiting access to file
   async get(key) {
-    console.log(`File access for ${key}`)
-    //TODO: read file
+    const cache = await this.keyValueCache.get(CACHE_KEY)
+    if (!cache) {
+      console.log(`File access for${key}`)
+      const result = await readFile(this.jsonDbPath)
+      const parsedResult = JSON.parse(result)
+      await this.keyValueCache.set(CACHE_KEY, parsedResult)
+      return parsedResult[key]
+    }
+    return cache[key]
   }
 
   async getPosts() {
-    //TODO: implement get Posts using `get` function
+    const posts = await this.get(`posts`)
+    return posts
   }
 
   async getAuthorById(id) {
-    //TODO: implement getAuthorById and filter.
+    const authors = await this.get(`authors`)
+    return authors.filter((author) => author.id === id)[0]
   }
 }
 

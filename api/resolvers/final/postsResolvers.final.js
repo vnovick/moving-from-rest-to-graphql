@@ -12,6 +12,11 @@ const sort = (data, sortingKey, order) =>
 const limit = (data, limit) => data.slice(0, limit)
 
 const postsResolvers = {
+  Mutation: {
+    insertPost: async (_, {input}, {dataSources}) => {
+      return dataSources.postsJsonAPI.insertPost(input)
+    },
+  },
   Query: {
     posts: async (_, args, {dataSources}) => {
       const postsResult = await dataSources.postsJsonAPI.getPosts()
@@ -27,27 +32,6 @@ const postsResolvers = {
         ...post,
         author: post.authorId,
       }))
-
-      // ------- Extra credit -----------
-
-      // const authors = await limitedPosts.reduce(async (acc, post) => {
-      //   const accResolved = await acc
-      //   if (accResolved[post.authorId]) {
-      //     return acc
-      //   }
-      //   const res = await fetch(
-      //     `http://localhost:3000/api/authors/${post.authorId}`,
-      //   )
-      //   const profile = await res.json()
-      //   return {
-      //     ...accResolved,
-      //     [post.authorId]: profile,
-      //   }
-      // }, {})
-      // return limitedPosts.map((post) => ({
-      //   ...post,
-      //   author: authors[post.authorId],
-      // }))
 
       return posts
     },

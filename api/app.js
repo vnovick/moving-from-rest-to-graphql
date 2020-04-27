@@ -9,6 +9,7 @@ const {typeDefs} = require('./typeDefs')
 const {resolvers} = require('./resolvers')
 const app = express()
 const {PostsRESTAPI} = require('./data/postsDataSource')
+const {PostsJsonDataSource} = require('./data/postsJsonDataSource')
 ///////////Here we will start GraphQL implementation
 
 // Construct a schema, using GraphQL schema language
@@ -19,6 +20,7 @@ const server = new ApolloServer({
   dataSources: () => {
     return {
       postsAPI: new PostsRESTAPI(),
+      postsJsonAPI: new PostsJsonDataSource(),
     }
   },
   mocks: true,

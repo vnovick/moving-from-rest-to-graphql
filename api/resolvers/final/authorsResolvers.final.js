@@ -4,6 +4,11 @@ const fetchDataFromDataSource = async ({field, dataSource}, authorId) => {
 }
 
 const authorsResolvers = {
+  Mutation: {
+    insertAuthor: async (_, {input}, {dataSources}) => {
+      return dataSources.postsJsonAPI.insertAuthor(input)
+    },
+  },
   Author: {
     name: async (authorId, args, {dataSources}) => {
       return fetchDataFromDataSource(
