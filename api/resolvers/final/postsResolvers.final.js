@@ -13,10 +13,13 @@ const limit = (data, limit) => data.slice(0, limit)
 
 const postsResolvers = {
   Query: {
-    posts: async (_, args) => {
-      const result = await fetch(`http://localhost:3001/api/posts`)
-      const postsResult = await result.json()
+    posts: async (_, args, {dataSources}) => {
+      const postsResult = await dataSources.postsAPI.getPosts()
+
+      // Order first
       const posts = args.order ? sort(postsResult, 'id', args.order) : args
+
+      // Limit
       const limitedPosts = args.limit ? limit(posts, args.limit) : posts
       return limitedPosts.map((post) => ({
         ...post,

@@ -1,28 +1,5 @@
 const fetch = require('node-fetch')
 
-const dummyData = [
-  {
-    id: 8,
-    title: 'Post One',
-    content: 'text',
-  },
-  {
-    id: 6,
-    title: 'Post Two',
-    content: 'text',
-  },
-  {
-    id: 2,
-    title: 'Post Three',
-    content: 'text',
-  },
-  {
-    id: 5,
-    title: 'Post Four',
-    content: 'text',
-  },
-]
-
 // Sorting helper function to sort either ASC or DESC
 const sort = (data, sortingKey, order) =>
   data.sort(
@@ -36,11 +13,43 @@ const limit = (data, limit) => data.slice(0, limit)
 
 const postsResolvers = {
   Query: {
-    posts: (obj, args, context) => {
-      const posts = args.order ? sort(dummyData, 'id', args.order) : args
+    posts: async (_, args, context) => {
+      // TODO: Switch to using REST dataSource that will be accessed on context argument
+      const result = await fetch(`http://localhost:3001/api/posts`)
+      const postsResult = await result.json()
+
+      // Order first
+      const posts = args.order ? sort(postsResult, 'id', args.order) : args
+
+      // Limit
       const limitedPosts = args.limit ? limit(posts, args.limit) : posts
-      return limitedPosts
-      //TODO: Load data from http://localhost:3001/api/posts. Use `async` resolver for that
+      return limitedPosts.map((post) => ({
+        ...post,
+        author: post.authorId,
+      }))
+
+      // ------- Extra credit -----------
+
+      // const authors = await limitedPosts.reduce(async (acc, post) => {
+      //   const accResolved = await acc
+      //   if (accResolved[post.authorId]) {
+      //     return acc
+      //   }
+      //   const res = await fetch(
+      //     `http://localhost:3000/api/authors/${post.authorId}`,
+      //   )
+      //   const profile = await res.json()
+      //   return {
+      //     ...accResolved,
+      //     [post.authorId]: profile,
+      //   }
+      // }, {})
+      // return limitedPosts.map((post) => ({
+      //   ...post,
+      //   author: authors[post.authorId],
+      // }))
+
+      return posts
     },
   },
 }
