@@ -10,7 +10,9 @@ class PostsRESTAPI extends RESTDataSource {
     return this.get(`posts`)
   }
 
-  // TODO: Implement getting authors by Id async method
+  async getAuthorById(id) {
+    return this.get(`authors/${id}`)
+  }
 }
 
 module.exports = {

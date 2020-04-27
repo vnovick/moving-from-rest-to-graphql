@@ -1,37 +1,27 @@
-// ------- Extra Credit --------------
-// const fetchDataFromDataSource = async ({field, dataSource}, authorId) => {
-//   const result = await dataSource.getAuthorById(authorId)
-//   return result[field]
-// }
+const fetchDataFromDataSource = async ({field, dataSource}, authorId) => {
+  const result = await dataSource.getAuthorById(authorId)
+  return result[field]
+}
 
 const authorsResolvers = {
-  // ----------- Extra Credit ----------
-  // name: async (authorId, args, {dataSources}) => {
-  //   return fetchDataFromDataSource(
-  //     {
-  //       field: 'name',
-  //       dataSource: dataSources.postsAPI,
-  //     },
-  //     authorId,
-  //   )
-  // },
-  // avatarUrl: async (authorId, args, {dataSources}) => {
-  //   return fetchDataFromDataSource(
-  //     {
-  //       field: 'avatarUrl',
-  //       dataSource: dataSources.postsAPI,
-  //     },
-  //     authorId,
-  //   )
-  // },
   Author: {
     name: async (authorId, args, {dataSources}) => {
-      const author = await dataSources.postsAPI.getAuthorById(authorId)
-      return author.name
+      return fetchDataFromDataSource(
+        {
+          field: 'name',
+          dataSource: dataSources.postsJsonAPI,
+        },
+        authorId,
+      )
     },
     avatarUrl: async (authorId, args, {dataSources}) => {
-      const author = await dataSources.postsAPI.getAuthorById(authorId)
-      return author.avatarUrl
+      return fetchDataFromDataSource(
+        {
+          field: 'avatarUrl',
+          dataSource: dataSources.postsJsonAPI,
+        },
+        authorId,
+      )
     },
   },
 }

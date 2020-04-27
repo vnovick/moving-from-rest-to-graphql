@@ -13,13 +13,14 @@ const limit = (data, limit) => data.slice(0, limit)
 
 const postsResolvers = {
   Query: {
-    posts: async (_, args, context) => {
-      // TODO: Switch to using REST dataSource that will be accessed on context argument
-      const result = await fetch(`http://localhost:3001/api/posts`)
-      const postsResult = await result.json()
+    posts: async (_, args, {dataSources}) => {
+      // TODO: Switch to different data source
+      const postsResult = await dataSources.postsAPI.getPosts()
 
       // Order first
-      const posts = args.order ? sort(postsResult, 'id', args.order) : args
+      const posts = args.order
+        ? sort(postsResult, 'id', args.order)
+        : postsResult
 
       // Limit
       const limitedPosts = args.limit ? limit(posts, args.limit) : posts

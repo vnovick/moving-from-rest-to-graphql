@@ -8,7 +8,7 @@ const {ApolloServer, gql} = require('apollo-server-express')
 const {typeDefs} = require('./typeDefs')
 const {resolvers} = require('./resolvers')
 const app = express()
-const {PostsRESTAPI} = require('./data/postsDataSource.final')
+const {PostsRESTAPI} = require('./data/postsDataSource')
 ///////////Here we will start GraphQL implementation
 
 // Construct a schema, using GraphQL schema language
@@ -16,7 +16,11 @@ const {PostsRESTAPI} = require('./data/postsDataSource.final')
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  //TODO: add dataSources object here with key pointing to new PostsRESTAPI instance
+  dataSources: () => {
+    return {
+      postsAPI: new PostsRESTAPI(),
+    }
+  },
   mocks: true,
   mockEntireSchema: false,
 })

@@ -1,26 +1,30 @@
-const fetch = require('node-fetch')
+const fetchDataFromDataSource = async ({field, dataSource}, authorId) => {
+  const result = await dataSource.getAuthorById(authorId)
+  return result[field]
+}
 
 const authorsResolvers = {
   Author: {
-    name: async (authorId, args, context) => {
-      // TODO: Switch to using REST dataSource that will be accessed on context argument
-      const result = await fetch(
-        `http://localhost:3001/api/authors/${authorId}`,
+    name: async (authorId, args, {dataSources}) => {
+      return fetchDataFromDataSource(
+        {
+          field: 'name',
+          // TODO: Switch to different data source
+          dataSource: dataSources.postsAPI,
+        },
+        authorId,
       )
-      const author = await result.json()
-      return author.name
     },
-    avatarUrl: async (authorId, args, context) => {
-      // TODO: Switch to using REST dataSource that will be accessed on context argument
-      const result = await fetch(
-        `http://localhost:3001/api/authors/${authorId}`,
+    avatarUrl: async (authorId, args, {dataSources}) => {
+      return fetchDataFromDataSource(
+        {
+          field: 'avatarUrl',
+          // TODO: Switch to different data source
+          dataSource: dataSources.postsAPI,
+        },
+        authorId,
       )
-      const author = await result.json()
-      return author.avatarUrl
     },
-
-    // ------ Extra Credit 2---------
-    // Remove name and avatarUrl resolvers
   },
 }
 
