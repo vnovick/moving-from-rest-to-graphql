@@ -1,4 +1,4 @@
-# Exercise 3 - Explore GraphQL queries and mutations
+# Exercise 3 - GraphQL endpoint setup
 
 ## Background
 
