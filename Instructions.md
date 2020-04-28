@@ -1,4 +1,4 @@
-# Exercise Exercise 7 - Migrate to the same data source
+# Exercise 8 - Implement Mutations and Input types
 
 ## Background
 
