@@ -6,9 +6,11 @@ const postType = gql`
     subTitle: String
     content: String!
     featuredImage: String
-    # --- Extra credit ---
+    authorId: ID
+    # -- Extra credit 1 ---
+    # authorIdLegacy: Int
+    # --- Extra credit 2 ---
     # author: AuthorInputType
-    authorId: Int
   }
 
   type Post {

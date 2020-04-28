@@ -12,6 +12,17 @@ const writeFile = util.promisify(fs.writeFile)
 
 const CACHE_KEY = 'postsJsonCache'
 
+const filterOutKey = (input, keyToFilter) =>
+  Object.keys(input).reduce((acc, key) => {
+    if (key === keyToFilter) {
+      return acc
+    }
+    return {
+      ...acc,
+      [key]: input[key],
+    }
+  }, {})
+
 class PostsJsonDataSource extends DataSource {
   constructor() {
     super()
@@ -20,25 +31,31 @@ class PostsJsonDataSource extends DataSource {
     this.jsonDbPath = path.resolve(__dirname, '../db.json')
   }
 
-  //Caching our json file and limiting access to file
-  async get(key) {
+  // caching
+
+  async readFromCache(key) {
     const cache = await this.keyValueCache.get(CACHE_KEY)
     if (!cache) {
       console.log(`File access for${key}`)
       const result = await readFile(this.jsonDbPath)
       const parsedResult = JSON.parse(result)
       await this.keyValueCache.set(CACHE_KEY, parsedResult)
-      return parsedResult[key]
+      return parsedResult
     }
-    return cache[key]
+    return cache
+  }
+
+  //Caching our json file and limiting access to file
+  async get(key) {
+    const result = await this.readFromCache(key)
+    return result[key]
   }
 
   async add(key, data) {
-    const result = await readFile(this.jsonDbPath)
-    const parsedResult = JSON.parse(result)
-    parsedResult[key].push(data)
-    writeFile(this.jsonDbPath, JSON.stringify(parsedResult, null, 2))
-    await this.keyValueCache.set(CACHE_KEY, parsedResult)
+    const result = await this.readFromCache(key)
+    result[key].push(data)
+    writeFile(this.jsonDbPath, JSON.stringify(result, null, 2))
+    await this.keyValueCache.set(CACHE_KEY, result)
   }
 
   async getPosts() {
@@ -62,22 +79,29 @@ class PostsJsonDataSource extends DataSource {
 
   async insertPost(input) {
     const post = {
-      id: uuidv4,
+      id: uuidv4(),
+      // ------------Extra credit 1 ------
+      // authorId: input.authorIdLegacy,
+      // ...filterOutKey(input, 'authorIdLegacy'),
       ...input,
     }
     if (input.authorId) {
       return await this.add('posts', post)
-    } else {
-      throw new Error('no author Id provided')
     }
-    // ----------- Extra credit -------
+    // ------------Extra credit 1 ------
+    // if (input.authorId || input.authorIdLegacy) {
+    //   return await this.add('posts', post)
+    // }
+    // ----------- Extra credit 2 -------
     // if (input.author) {
     //   const author = await this.insertAuthor(input.author)
     //   const insertPost = await this.add('posts', {
-    //     ...post,
+    //     ...filterOutKey(post, 'author'),
     //     authorId: author.id,
     //   })
+    //   return insertPost
     // }
+    throw new Error('no author Id provided')
   }
 }
 
