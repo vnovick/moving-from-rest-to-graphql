@@ -98,8 +98,9 @@ exploring the final version
 **Steps:**
 
 1. Write a new query definition to query all posts in `typeDefs/query.js`
-2. Define Author type in `typeDefs/authorType.js` and Post type in `postType`.
-   Import these types in `typeDefs/index.js` (Uncomment the code there)
+2. Define Author type in `typeDefs/types/authorType.js` and Post type in
+   `postType`. Import these types in `typeDefs/index.js` (Uncomment the code
+   there)
 3. Create posts root query resolver in `resolvers/postsResolvers.js` to return
    dummy Data provided in the resolver
 4. Define `ORDER` [enum](https://graphql.org/learn/schema/#enumeration-types)
