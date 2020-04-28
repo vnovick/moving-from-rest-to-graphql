@@ -26,17 +26,23 @@ different data sources
 
 **Steps:**
 
-1. Implement `get` function in `data/postsJsonDataSource.js` using
+1. Add a new data source in `app.js`
+
+```javascript
+  postsJsonAPI: new PostsJsonDataSource(),
+```
+
+2. Implement `get` function in `data/postsJsonDataSource.js` using
 
 ```javascript
 const result = await readFile(this.jsonDbPath)
 const parsedResult = JSON.parse(result)
 ```
 
-2. In `data/postsJsonDataSource.js` implement `getPosts` method and
+3. In `data/postsJsonDataSource.js` implement `getPosts` method and
    `getAuthorById` methods
-3. Change data source in `postsResolver`
-4. Execute the following query:
+4. Change data source in `postsResolver`
+5. Execute the following query:
 
 ```graphql
 query getPosts {
@@ -54,7 +60,7 @@ query getPosts {
 Notice that in our api log we will see both request to REST endpoints for
 authors and `File access for posts` as well as `REST` API calls
 
-5. Switch both posts and authors using json data source by accessing it through
+6. Switch both posts and authors using json data source by accessing it through
    resolver context
 
 ## Extra Credit
