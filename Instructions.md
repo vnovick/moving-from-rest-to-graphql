@@ -6,8 +6,9 @@ In this exercise you are not required to make any changes to the files, but more
 exploring how you can query GraphQL endpoints
 
 - Go to [https://graphiql-online.com/](https://graphiql-online.com/) and paste
-  the following endpoint: `hasura endpoint` (This endpoint is already
-  implemented GraphQL server)
+  the following endpoint:
+  `https://moving-from-rest-to-graphql.herokuapp.com/v1/graphql` (This endpoint
+  is already implemented GraphQL server)
 - Explore Schema and docs
 
 # Actual exercise
