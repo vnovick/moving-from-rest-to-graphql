@@ -53,8 +53,9 @@ class PostsJsonDataSource extends DataSource {
 
   async add(key, data) {
     const result = await this.readFromCache(key)
-    // TODO: use writeFile to add updated json. use JSON.stringify(result, null, 2)
-    // Write result into the cache
+    result[key].push(data)
+    writeFile(this.jsonDbPath, JSON.stringify(result, null, 2))
+    await this.keyValueCache.set(CACHE_KEY, result)
   }
 
   async getPosts() {
