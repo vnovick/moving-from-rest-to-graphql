@@ -1,9 +1,15 @@
 const {gql} = require('apollo-server-express')
 
 const postType = gql`
-  # input PostInputType {
-  # TODO: implement PostInputType. make sure it has authorId: ID
-  # }
+  input PostInputType {
+    title: String!
+    subTitle: String
+    content: String!
+    featuredImage: String
+    authorId: ID
+    authorIdLegacy: Int
+    author: AuthorInputType
+  }
 
   type Post {
     id: ID!

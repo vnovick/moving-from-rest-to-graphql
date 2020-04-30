@@ -53,8 +53,9 @@ class PostsJsonDataSource extends DataSource {
 
   async add(key, data) {
     const result = await this.readFromCache(key)
-    // TODO: use writeFile to add updated json. use JSON.stringify(result, null, 2)
-    // Write result into the cache
+    result[key].push(data)
+    writeFile(this.jsonDbPath, JSON.stringify(result, null, 2))
+    await this.keyValueCache.set(CACHE_KEY, result)
   }
 
   async getPosts() {
@@ -72,7 +73,8 @@ class PostsJsonDataSource extends DataSource {
       id: uuidv4(),
       ...input,
     }
-    // TODO: add an author and return it back
+    await this.add('authors', author)
+    return author
   }
 
   async insertPost(input) {
@@ -83,16 +85,22 @@ class PostsJsonDataSource extends DataSource {
       // ...filterOutKey(input, 'authorIdLegacy'),
       ...input,
     }
+    if (input.authorId) {
+      return await this.add('posts', post)
+    }
 
-    //TODO: check if we have input.authorId and if we do then add post data using this.add
+    if (input.authorId || input.authorIdLegacy) {
+      return await this.add('posts', post)
+    }
 
-    // ------------Extra credit 1 ------
-    // TODO: check whether we have either authorId or authorIdLegacy
-    // ----------- Extra credit 2 -------
-    // if (input.author) {
-    // TODO: insert user reusing this.insertUser function, get authorId and then
-    // insert it as authorId inside new post
-    // }
+    if (input.author) {
+      const author = await this.insertAuthor(input.author)
+      const insertPost = await this.add('posts', {
+        ...filterOutKey(post, 'author'),
+        authorId: author.id,
+      })
+      return insertPost
+    }
     throw new Error('no author Id provided')
   }
 }

@@ -4,8 +4,7 @@
  * Module dependencies.
  */
 
-const app =
-  process.env.NODE_ENV === 'final' ? require('../app.final') : require('../app')
+const app = require('../app')
 const debug = require('debug')('api:server')
 const http = require('http')
 

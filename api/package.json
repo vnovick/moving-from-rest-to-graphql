@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "start:final": "NODE_ENV=final nodemon ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "apollo-datasource-rest": "^0.8.1",

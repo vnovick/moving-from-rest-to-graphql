@@ -12,6 +12,11 @@ const sort = (data, sortingKey, order) =>
 const limit = (data, limit) => data.slice(0, limit)
 
 const postsResolvers = {
+  Mutation: {
+    insertPost: async (_, {input}, {dataSources}) => {
+      return dataSources.postsJsonAPI.insertPost(input)
+    },
+  },
   Query: {
     posts: async (_, args, {dataSources}) => {
       const postsResult = await dataSources.postsJsonAPI.getPosts()
